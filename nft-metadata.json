@@ -1,0 +1,16 @@
+{
+    "attributes": [
+      {
+        "trait_type": "Breed",
+        "value": "SgOtter"
+      },
+      {
+        "trait_type": "Color",
+        "value": "Brown"
+      }
+    ],
+    "description": "Adorable and sensitive otters.",
+    "image": "https://gateway.pinata.cloud/ipfs/QmWscXyerhmppnbuWm43uuno9TtxTCD61MniTHuWwhsUyR",
+    "name": "Otters"
+  }
+  
