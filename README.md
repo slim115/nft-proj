@@ -57,7 +57,7 @@ We initially tried to integrate more with Pendle Environment by using the contra
 
 ### Steps needed to accomplish these plans
 1. Read up on the resources needed for this project: [ERC20 Token Standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/), [ERC721 Token Standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/), [How do Liquidity Pools work](https://academy.binance.com/en/articles/what-are-liquidity-pools-in-defi), [How to use Alchemy](https://www.alchemy.com/), [How to write and deploy NFT contract](https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/), [How to integrate React with Solidity smart contracts](https://docs.alchemy.com/alchemy/tutorials/hello-world-smart-contract/part-4). :white_check_mark:
-2. Practice writing smart contracts and familiarizing with the flow: [CryptoZombies Platform](https://cryptozombies.io/), [Development Workshop](https://github.com/BlockchainCourseNTU/hello-dapp/). :white_check_mark:
+2. Practice writing smart contracts and familiarizing with the flow: [CryptoZombies Platform](https://cryptozombies.io/), [Development Workshop](https://github.com/BlockchainCourseNTU/hello-dapp/), [Last Year's Development Workshop](https://github.com/BlockchainCourseNTU/resource/tree/master/development/hello-dapp) :white_check_mark:
 3. Using [Pendle-Core Repo and its smart contracts](https://github.com/pendle-finance/pendle-core) as a guide, to mock up the Liquidity Pool environment. :white_check_mark:
 4. Getting Kovan ETH from the [Kovan Faucet](https://app.mycrypto.com/faucet) so that we can test, test and test again! :white_check_mark:
 
