@@ -34,7 +34,7 @@ Given the massive development of the NFT space, it will be greatly beneficial if
 We initially tried to integrate more with Pendle Environment by using the contract addresses of IPendleLiquidityMiningV2 and the PendleToken already deployed. <br /> :bangbang: However, we could not access their contracts when trying to mint or transfer tokens. <br />
 :ballot_box_with_check: Decided to go with mocking up our own Liquidity Pool environment with our tokens and NFTs.
 1. :muscle: Understanding the workflow: <br />
-    - Start with the Back End, write the smart contracts for the ERC20 tokens, ERC721 tokens and Liquidity Pool on [Visual Studio Code editor](https://code.visualstudio.com/) with the [Solidity plugin].(https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)
+    - Start with the Back End, write the smart contracts for the ERC20 tokens, ERC721 tokens and Liquidity Pool on [Visual Studio Code editor](https://code.visualstudio.com/) with the [Solidity plugin](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)
     - Deploy on the [Kovan Testnet](https://kovan.etherscan.io/) using [Alchemy](https://www.alchemy.com/) as node provider since Pendle projects have been testing on the Kovan Testnet in the past.
     - Develop the Front End application for the User Interface.
     - Integrate the Front End with the Back End for the project completion!
