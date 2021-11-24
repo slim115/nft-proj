@@ -1,4 +1,5 @@
-:smiley: Please preview README in github for better visualization and experience :smiley:
+:smiley: Please preview README in github for better visualization and experience :smiley: 
+:red_circle: Please contact me at slim115@e.ntu.edu.sg if there are any issues!
 # CE/CZ4153 Blockchain Technology Development Project
 ## Project topic 5: Pendle: Liquidity Mining with NFTs as Rewards alongside PENDLE
 
@@ -92,13 +93,13 @@ npm install --save-dev hardhat
 Create at least one account and make sure there is enough funds using a [Kovan Faucet](https://app.mycrypto.com/faucet). <br />
 Click on the Metmask extension -> 3 dots -> Account Details -> Export Private Key -> Enter your password -> **Copy your private key** (You will need this later!)
 5. Connect to the ethereum network: <br /> 
-Create a free account on [Alchemy](https://www.alchemy.com/). Create your own App (Make sure Kovan network is selected!) and **get your API key**. (You will need this later!)
+Create a free account on [Alchemy](https://www.alchemy.com/). Create your own App (Make sure Kovan network is selected!) and **get your wss API key**. (You will need this later!)
 6. Connect Metamask and Alchemy to Project: <br />
 First, install the dotenv package in your project directory <br />
 ```
 npm install dotenv --save
 ```
-Then, create a .env file in the root directory of the project, and add your MetaMask private key and HTTP Alchemy API URL to it as such: <br />
+Then, create a .env file in the root directory of the project, and add your MetaMask private key and Alchemy API URL to it as such: <br />
 ```
 API_URLL="wss://eth-kovan.alchemyapi.io/v2/your-api-key"
 PRIVATE_KEY="your-metamask-private-key"
@@ -138,5 +139,35 @@ uint public epochDuration = 60;
 # Deploying the pool contract to the Kovan network
 npx hardhat run scripts/deploy.js --network kovan
 ```
-#### Step 2
+#### Step 2: Linking with the Front-End
+Congrats! :rainbow: We are finally done with deploying our contracts! Now with contract addresses, we have to link with the Front-End. 
+1. Head over to /my-app/src/pool.js and populate the addresses once again: <br />
+```
+export const myAddress = "your-user-address"; // Copy paste from Metamask extension
+export const fromAddress = "your-user-address"; // For Simplicity sake, you can use your address
+export const forAddress = "your-user-address"; // For Simplicity sake, you can use your address
+export const factoryAddress = "your-stake-token-address";
+export const yieldAddress = "your-yield-token-address";
 
+const alchemyWSS = `wss://eth-kovan.alchemyapi.io/v2/your-api-key`; 
+
+export const PoolContractAddress = "your-pool-contract-address";
+```
+2. Do the same for 5 more javascripts in the same folder (It's troublesome but jiayou! :muscle:): <br />
+    -./redeemnfts.js <br />
+    -./redeemreward.js <br />
+    -./redeeminterest.js <br />
+    -./staking.js <br />
+    -./provideliquidity.js <br />
+    
+#### Step 3: Launch the Front-End Application
+Now, the moment we have been waiting for! 
+1. Make sure you are in the /root-folder/my-app directory and run: <br />
+```
+npm start
+```
+2. Yay! Now the application should be running on the React App - localhost:3000
+#### Step 4: Using the Liquidity Pool Functions 
+Alright, now the fun part!
+   
+    
