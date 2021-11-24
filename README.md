@@ -55,7 +55,7 @@ We initially tried to integrate more with Pendle Environment by using the contra
     ![This is an image](https://gateway.pinata.cloud/ipfs/QmNeznaBpTW14AJAbGk4CYZNxKjETTkjc6XjFwqKU1u17q)
     ![This is an image](https://gateway.pinata.cloud/ipfs/QmXH7MRXrGejYBm6a7sZBKzNHi9Mbc3XdrHaghyQWQwZiQ)
 
-### Steps needed to accomplish those plans
+### Steps needed to accomplish these plans
 1. Read up on the resources needed for this project: [ERC20 Token Standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/), [ERC721 Token Standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/), [How do Liquidity Pools work](https://academy.binance.com/en/articles/what-are-liquidity-pools-in-defi), [How to use Alchemy](https://www.alchemy.com/), [How to write and deploy NFT contract](https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/), [How to integrate React with Solidity smart contracts](https://docs.alchemy.com/alchemy/tutorials/hello-world-smart-contract/part-4). :white_check_mark:
 2. Practice writing smart contracts and familiarizing with the flow: [CryptoZombies Platform](https://cryptozombies.io/), [Development Workshop](https://github.com/BlockchainCourseNTU/hello-dapp/). :white_check_mark:
 3. Using [Pendle-Core Repo and its smart contracts](https://github.com/pendle-finance/pendle-core) as a guide, to mock up the Liquidity Pool environment. :white_check_mark:
@@ -69,9 +69,9 @@ We initially tried to integrate more with Pendle Environment by using the contra
 - Simulating the Liquidity Pool concept by minting 2 ERC20 tokens to the user so he/she can 'provide liquidity' to the pool in order to get his _stakeToken_.
 
 ### Usage of code 
-#### Step 0: Prerequisite & Installation
+## Step 0: Prerequisite & Installation
 
-#### Step 1
+## Step 1
 
-#### Step 2
+## Step 2
 
