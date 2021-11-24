@@ -63,15 +63,80 @@ We initially tried to integrate more with Pendle Environment by using the contra
 
 ### Bonuses we added: 
 :+1: :+1: :+1: 
-- Implementing quadratic rewards i.e More _stakeToken_ staked = even more rewards.
-- Besides linearly vesting, lock up period of 1 epoch is implemented so users will not manipulate the pool for the rewards i.e Users are forced to redeem rewards only after 1 epoch.
-- Implementing lockup of reward points so users can only redeem NFTs after all the epochs have ended.
-- Simulating the Liquidity Pool concept by minting 2 ERC20 tokens to the user so he/she can 'provide liquidity' to the pool in order to get his _stakeToken_.
+1. Implementing quadratic rewards i.e More _stakeToken_ staked = even more rewards.
+2. Besides linearly vesting, lock up period of 1 epoch is implemented so users will not manipulate the pool for the rewards i.e Users are forced to redeem rewards only after 1 epoch.
+3. Implementing lockup of reward points so users can only redeem NFTs after all the epochs have ended.
+4. Simulating the Liquidity Pool concept by minting 2 ERC20 tokens to the user so he/she can 'provide liquidity' to the pool in order to get his _stakeToken_.
 
 ### Usage of code 
 #### Step 0: Prerequisite & Installation
+In this section, we will go through the tools and dependencies required to be installed before the kick-start of our project. <br />
 
-#### Step 1
+First, make a new folder and unzip the GroupName.zip file submitted through NTULearn <br />
+Now, open your **terminal** or **powershell** to make sure the following are installed: <br />
+1. [npm](https://docs.npmjs.com/getting-started) or [yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable): <br />
+```
+# Check npm or yarn is installed
+npm -v yarn-v
+```
+2. [node v8.9.4 or later](https://nodejs.org/en/): <br />
+```
+# Check nodejs is installed
+node -v
+```
+3. [hardhat](https://hardhat.org/getting-started/): <br /> 
+```
+npm install --save-dev hardhat
+``` 
+4. [Metamask extension](https://metamask.io/download.html): <br /> 
+Create at least one account and make sure there is enough funds using a [Kovan Faucet](https://app.mycrypto.com/faucet). <br />
+Click on the Metmask extension -> 3 dots -> Account Details -> Export Private Key -> Enter your password -> **Copy your private key** (You will need this later!)
+5. Connect to the ethereum network: <br /> 
+Create a free account on [Alchemy](https://www.alchemy.com/). Create your own App (Make sure Kovan network is selected!) and **get your API key**. (You will need this later!)
+6. Connect Metamask and Alchemy to Project: <br />
+First, install the dotenv package in your project directory <br />
+```
+npm install dotenv --save
+```
+Then, create a .env file in the root directory of the project, and add your MetaMask private key and HTTP Alchemy API URL to it as such: <br />
+```
+API_URLL="wss://eth-kovan.alchemyapi.io/v2/your-api-key"
+PRIVATE_KEY="your-metamask-private-key"
+```
+7. Install ethers.js
+```
+npm install --save-dev @nomiclabs/hardhat-ethers 
+```
+8. Extra step: For Testing (However, we used test cases minimally and mostly for debugging purposes) 
+```
+npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai ethers
+```
 
+#### Step 1: Deploy your smart contracts on the Kovan Network
+In this section, we will deploy the smart contracts in order.
+1. Before deploying, head over to the **/scripts/deploy.js** and check that lines 22-24 are commented out. This is because the pool contract requires the other contract addresses, hence we deploy the 5 contracts first by running in the root folder: <br />
+```
+# Deploying the first 5 contracts to the Kovan network
+npx hardhat run scripts/deploy.js --network kovan
+```
+2. Once done, take note of their contract addresses respectively and head over to /contracts/pool.sol. Update accordingly: <br />
+```
+address MyTokenAddress = your-nft-token-address; // NFT token from mynft.sol
+...
+Factory = factory(your-stake-token-address); // LP Stake Token from factory.sol
+Mytoken1 = mytoken1(your-mtk1-token-address); // LP pairing 1 from mytoken1.sol
+Mytoken2 = mytoken2(your-mtk2-token-address); // LP pairing 2 from mytoken2.sol
+YieldToken = yieldtoken(your-yield-token-address); // Yield Token from yieldtoken.sol
+```
+3. Before deploying, Take note that the _numberOfEpochs_ and _epochDuration_ have been chosen to be 10 and 60 respectively for simple demonstration purposes. You may change accordingly if you want to. <br />
+```
+uint public numberOfEpochs = 10;
+uint public epochDuration = 60;
+```
+4. Now, head back to **/scripts/deploy.js** and comment lines 2-20 and uncomment lines 22-24. Deploy the pool contract now: <br />
+```
+# Deploying the pool contract to the Kovan network
+npx hardhat run scripts/deploy.js --network kovan
+```
 #### Step 2
 
