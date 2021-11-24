@@ -69,9 +69,9 @@ We initially tried to integrate more with Pendle Environment by using the contra
 - Simulating the Liquidity Pool concept by minting 2 ERC20 tokens to the user so he/she can 'provide liquidity' to the pool in order to get his _stakeToken_.
 
 ### Usage of code 
-## Step 0: Prerequisite & Installation
+#### Step 0: Prerequisite & Installation
 
-## Step 1
+#### Step 1
 
-## Step 2
+#### Step 2
 
