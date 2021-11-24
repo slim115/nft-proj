@@ -6,10 +6,10 @@
 - [General Overview](#general-overview)
 - [Terminology Clarification](#before-starting-we-should-straighten-out-some-terminology)
 - [Understanding of the Problem](#detailed-understanding-of-the-problem)
-- [Engineering Plans](engineering-plans-we-had)
-- [Steps to accomplish these Plans](steps-needed-to-accomplish-these-plans)
-- [Bonuses](bonuses-we-added)
-- [Usage of code](usage-of-code)
+- [Engineering Plans](#engineering-plans-we-had)
+- [Steps to accomplish these Plans](#steps-needed-to-accomplish-these-plans)
+- [Bonuses](#bonuses-we-added)
+- [Usage of code](#usage-of-code)
 
 ### General Overview
 1. A liquidity provider (LP) will be rewarded with the Pendle tokens when he provides liquidity to the liquidity pool. :droplet:
