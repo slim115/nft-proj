@@ -104,7 +104,7 @@ Then, create a .env file in the root directory of the project, and add your Meta
 API_URLL="wss://eth-kovan.alchemyapi.io/v2/your-api-key"
 PRIVATE_KEY="your-metamask-private-key"
 ```
-7. Install ethers.js
+7. Install [ethers.js](https://docs.ethers.io/v5/)
 ```
 npm install --save-dev @nomiclabs/hardhat-ethers 
 ```
