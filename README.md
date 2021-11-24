@@ -168,6 +168,16 @@ npm start
 ```
 2. Yay! Now the application should be running on the React App - localhost:3000
 #### Step 4: Using the Liquidity Pool Functions 
-Alright, now the fun part!
-   
+Alright, now the fun part! <br />
+Now, open your metamask wallet (make sure you are on the kovan network) and you should see your Kovan ETH but where are the other tokens? <br />
+Well we got to import them! Scroll down and go to "Import tokens" <br />
+![This is an image](https://gateway.pinata.cloud/ipfs/QmXuk86PJjUmYgbMXrkTxSy8b58VQJ1YHuiNWKQTciCgFR) <br />
+Now copy paste the token address into the "Token Contract Address" field and "Add Custom Token" <br />
+![This is an image](https://gateway.pinata.cloud/ipfs/QmbSr2XqY3DdqfXVsfDvM3g66D923fuooCSANdZ4WYNXJg) <br />
+Make sure to do the same for 4 of the contract addresses: _MyToken1_, _MyToken2_, _StakeToken_, _YieldToken_ <br />
+Now you should be able to see all the tokens! :rainbow: Need to change image ! <br /> 
+![This is an image](https://gateway.pinata.cloud/ipfs/QmNeznaBpTW14AJAbGk4CYZNxKjETTkjc6XjFwqKU1u17q) <br />
+
+You will notice that you have 10,000 _MTK1_ and 10,000 _MTK2_ as they were minted to you when you deployed their contract. <br />
+Now as a Liquidity Provider, we will start by 'providing liquidity' to this pool. 
     
