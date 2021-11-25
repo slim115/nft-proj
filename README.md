@@ -90,7 +90,7 @@ node -v
 npm install --save-dev hardhat
 ``` 
 4. [Metamask extension](https://metamask.io/download.html): <br /> 
-Create at least one account and make sure there is enough funds using a [Kovan Faucet](https://app.mycrypto.com/faucet). <br />
+Create at least one account and make sure there is enough funds (preferably 0.1 KETH) using a [Kovan Faucet](https://app.mycrypto.com/faucet). <br />
 Click on the Metmask extension -> 3 dots -> Account Details -> Export Private Key -> Enter your password -> **Copy your private key** (You will need this later!)
 5. Connect to the ethereum network: <br /> 
 Create a free account on [Alchemy](https://www.alchemy.com/). Create your own App (Make sure Kovan network is selected!) and **get your wss API key**. (You will need this later!)
@@ -115,9 +115,9 @@ npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai ethers
 
 #### Step 1: Deploy your smart contracts on the Kovan Network
 In this section, we will deploy the smart contracts in order.
-1. Before deploying, head over to the **/scripts/deploy.js** and check that lines 22-24 are commented out. This is because the pool contract requires the other contract addresses, hence we deploy the 5 contracts first by running in the root folder: <br />
+1. Before deploying, head over to the **/scripts/deploy.js** and check that lines 10-24 are commented out. This is because an error might throw up when deploying contracts too closely together. Also, the last contract (pool contract) requires the other contract addresses, hence we deploy the first 2 contracts first; followed by the next 2 contracts and lastly the pool contract (by running this command in the root folder) <br />
 ```
-# Deploying the first 5 contracts to the Kovan network
+# Deploying the contracts to the Kovan network
 npx hardhat run scripts/deploy.js --network kovan
 ```
 2. Once done, take note of their contract addresses respectively and head over to /contracts/pool.sol. Update accordingly: <br />
@@ -167,17 +167,45 @@ Now, the moment we have been waiting for!
 npm start
 ```
 2. Yay! Now the application should be running on the React App - localhost:3000
-#### Step 4: Using the Liquidity Pool Functions 
-Alright, now the fun part! <br />
+#### Step 4: Importing the tokens to Metamask Wallet 
 Now, open your metamask wallet (make sure you are on the kovan network) and you should see your Kovan ETH but where are the other tokens? <br />
 Well we got to import them! Scroll down and go to "Import tokens" <br />
-![This is an image](https://gateway.pinata.cloud/ipfs/QmXuk86PJjUmYgbMXrkTxSy8b58VQJ1YHuiNWKQTciCgFR) <br />
+![This is an image](https://gateway.pinata.cloud/ipfs/QmQizNMNdK7S5LJBJGjrSqmmoPZqW9uR4hJVdoqETMPqRa) <br />
 Now copy paste the token address into the "Token Contract Address" field and "Add Custom Token" <br />
-![This is an image](https://gateway.pinata.cloud/ipfs/QmbSr2XqY3DdqfXVsfDvM3g66D923fuooCSANdZ4WYNXJg) <br />
+![This is an image](https://gateway.pinata.cloud/ipfs/Qmd6B2pAAY27oQHA9A93SkzQDVPfv6Ymtzn2pvKNSJA1HQ) <br />
 Make sure to do the same for 4 of the contract addresses: _MyToken1_, _MyToken2_, _StakeToken_, _YieldToken_ <br />
 Now you should be able to see all the tokens! :rainbow: Need to change image ! <br /> 
-![This is an image](https://gateway.pinata.cloud/ipfs/QmNeznaBpTW14AJAbGk4CYZNxKjETTkjc6XjFwqKU1u17q) <br />
+![This is an image](https://gateway.pinata.cloud/ipfs/QmSS8CP3kweYfTZEmKNgTd6RT6junoed8AXszmuMjbUE4R) <br />
 
-You will notice that you have 10,000 _MTK1_ and 10,000 _MTK2_ as they were minted to you when you deployed their contract. <br />
-Now as a Liquidity Provider, we will start by 'providing liquidity' to this pool. 
-    
+#### Step 5: Using the Liquidity Pool Functions 
+Alright, now the fun part! P.S. Advice to use the "Inspect->Console" to see when transactions and functions are successful <br />
+##### Providing Liquidity:
+- You will notice that you have 10,000 _MTK1_ and 10,000 _MTK2_ as they were minted to you when you deployed their contract. <br />
+- Now as a Liquidity Provider, we will start by 'providing liquidity' to this pool. Enter the amount you would like in the "Enter amount to provide Liquidity" box (In this case, we assume that liquidity is provided 50-50 which means typing 1000 will equate to providing 1000 _MTK1_ and 1000 _MTK2_. <br />
+- Opening up your metamask wallet, you would notice that you will be left with 9000 of each tokens and 1000 _stakeToken_ credited to your account: <br />
+![This is an image](https://gateway.pinata.cloud/ipfs/QmWfJqYwQ4itLxUVhqWTNAnYFEsaTqeBBKk14zumo7YHBs) <br />
+- Next, you can click on the "Update MTK1" and "Update MTK2" buttons to look at the dashboard at the top "Liquidity provided: MTK1: 1000 | MTK2: 1000" :+1: <br /> 
+##### Staking:
+- Next, we are going to stake our 1000 _stakeToken_ Before doing so, take note of 2 things:  
+    - Before staking, when clicking on the "Check Epoch Id", you should notice that the "Current Epoch Id will be 0. However, once we stake, the value will update to 1 and increment as per the _epochDuration_ thereafter. 
+    - If we look on the right, the Reward Rate table will show the reward multiplier that corresponds to the max tokens claimable. For example, staking 1000 should have 3000 in tokens earned at the end of the epochs. 
+- Now, fill in 1000 in the "Enter amount of Stake Token" box and hit on the "New Stake" button. 
+- Once done, we are going to click on a few buttons here: "Update Staked amount", "Update Staked amount in Pool", "Update Points in Pool", "Update Max Claimable ST", "Update Max Claimable YT". Note the changes accordingly on the dashboard. <br />
+##### Redeeming tokens & NFTs:
+- The exciting part! :100: We will be able to check the "Epoch Id" and the "Redeemable Amount in real time! We will be able to see the Epoch Id and Redeemable Amount move proportionally to each other.
+    - For example, at Epoch Id = 1, Redeemable Amount should be 0 (Recall 1st epoch is locked!)
+    - At Epoch Id = 2, Redeemable Amount should be 300 (Because Max Claimable is 3000, divided by 10 epochs)
+    - And at epoch Id = 11, Redeemable Amount should be 3000 (End of all of the epochs)
+- We can click on the "Redeem Stake Rewards" or "Redeem Yield Rewards" at any time of the Epochs from 1-11. For this example, we will click at the end, because gains~ :moneybag:
+- After, we will click on the "Update Stake Tokens earned" and "Update Yield Tokens earned" buttons before going to the dashboard and you should see something like this: <br /> ![This is an image](https://gateway.pinata.cloud/ipfs/QmTW65Zok3xuVqnrW9SFt3tjawajjwySScawtEg1sJ4fso) <br />
+- Lastly, lets get our cute Otters NFT !! :otter::heart_eyes: With 2000 points, let's get the Uncommon one. Head over to the "Redeem NFTs" section and enter 2000 in the "Enter points for redemption" box and hit on "Redeem points for NFT"! And we got our very own Otters NFT YAY!
+
+#### Step 6: Viewing our adorable NFT!
+To view the NFT, one has to use the Metamask mobile application as the NFT feature is not currently supported in the Metamask web extension. You can search for "Metamask" in either your iOS App Store or the Google Play Store. After downloading, import your account by using the private key from the extension. Here is a [guide](https://metamask.io/faqs) to do so under "I'm a Metamask Extension user...". Once done, make sure you are on the Kovan Network and click on the NFTS tab: <br />
+![This is an image](https://gateway.pinata.cloud/ipfs/QmPkea2dBRR61Y2vvG81qb416cujELEtWp4oq4gFr5ZwxU) <br />
+Now, we have to import the NFT. Add the NFT contract that we have deployed previously (Visit the Kovan Etherscan to find if you have forgotten). In the latest transaction, you should be able to see the ID of the NFT as well add that in here: <br />
+![This is an image](https://gateway.pinata.cloud/ipfs/QmanNw46QJQY33kbvdcQagmtY1z2BRQ4ridkKFPqH2bmvA) <br />
+Just wait for a moment and here it is, your very own Otters NFT! Welcome to the Otters Club!! :star_struck: <br />
+![This is an image](https://gateway.pinata.cloud/ipfs/QmezcajHoDRBz3EWLfhnFLGjvZXDVyskakBnG8THEn35JR) <br />
+
+Congratulations on completing the Liquidity Mining Project with NFTs as Rewards alongside PENDLE. I hope the Otters NFT is worth your time! :rocket:
